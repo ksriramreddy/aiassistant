@@ -1,6 +1,9 @@
+import dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
 
+dotenv.config();
+
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: process.env.OPENAI_API_KEY,
 });
-export const openai = new OpenAIApi(configuration);
+const openai = new OpenAIApi(configuration);
