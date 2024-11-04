@@ -3,6 +3,8 @@ import cors from 'cors'
 import {db} from './firebase.js'
 import {collection,addDoc} from 'firebase/firestore'
 import { loginUser } from './login.js'
+import path from 'path'
+import { useReducer } from 'react'
 
 // const express = require('express')
 // const cors = require('cors')
@@ -10,7 +12,8 @@ import { loginUser } from './login.js'
 const app = express()
 app.use(express.json());
 app.use(cors());
-
+app.set('view engine', 'jsx')
+app.use(express.static(path.join(path.dirname.toString(), 'public')));
 app.use(express.urlencoded({extended:true}))
 
 const registerUser = async (data)=>{
@@ -30,19 +33,16 @@ app.post('/register', async (req,res)=>{
 
 app.post('/login',async (req,res)=>{
     const data = req.body;
-    // console.log(data);
-    
     const user = await loginUser(data);
     if(user){
         console.log(user);
-        res.send('success')
+        localStorage.setItem('user', user)
+        res.send(user)
     }
     else{
         console.log(user);
-        res.send('fail')
-    }
+    }       
 })
-
 app.listen(3000,()=>{
-    console.log("running");
-})
+    console.log("running");     
+    })

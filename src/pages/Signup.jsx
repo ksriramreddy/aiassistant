@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useSignup } from '../Hooks/useSignup'
+
 function Signup() {
   const [username,setUsername] = useState("")
   const [password,setPassword] = useState("")
-  const handleSubmit =async (e)=>{
-    e.preventDefault();
-    try {
-      const res = await axios.post('http://localhost:3000/register',{username,password})
-      console.log(res);
+  const [notifications,setNotifications] = useState([])
+  // const handleSubmit =async (e)=>{
+  //   e.preventDefault();
+  //   try {
+  //     const res = await axios.post('http://localhost:3000/register',{username,password})
+  //     console.log(res);
       
-    } catch (error) {
-      console.log(error);
-    }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+  const {signupUser,loading}  = useSignup()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await signupUser({username,password,notifications})
   }
   return (
     <>
