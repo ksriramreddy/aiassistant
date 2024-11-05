@@ -4,8 +4,10 @@ import { useDispatch} from "react-redux";
 import { loginUser } from "../store/userInfo";
 import { useState} from "react";
 import { notify } from "./useToast";
+import { useNavigation } from "react-router-dom";
 export function useLogin() {
     const dispatch = useDispatch();
+    // const navigation = useNavigation();
     const [loading, isLoading] = useState(false)
     const [error, setError] = useState('')
     const userLogin  = async(data)=>{
@@ -24,6 +26,7 @@ export function useLogin() {
                 dispatch(loginUser(user[0]))
                 localStorage.setItem('user', JSON.stringify(user[0]))
                 notify('Logged in successfully')
+                
                 isLoading(false)
             }
             else{
@@ -40,4 +43,3 @@ export function useLogin() {
         loading
     }
 }
-

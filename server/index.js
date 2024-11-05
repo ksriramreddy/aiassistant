@@ -16,33 +16,11 @@ app.set('view engine', 'jsx')
 app.use(express.static(path.join(path.dirname.toString(), 'public')));
 app.use(express.urlencoded({extended:true}))
 
-const registerUser = async (data)=>{
-    try {
-        const ref = await addDoc(collection(db,'users'),data)
-    } catch (error) {
-        console.log(error.message);   
-    }
-}
 
-app.post('/register', async (req,res)=>{
-    const data = req.body
-    console.log(data);
-    await registerUser(data)
-    res.send(req.body)
+app.get('/',(req,res)=>{
+    // localStorage.getItem('') 
 })
 
-app.post('/login',async (req,res)=>{
-    const data = req.body;
-    const user = await loginUser(data);
-    if(user){
-        console.log(user);
-        localStorage.setItem('user', user)
-        res.send(user)
-    }
-    else{
-        console.log(user);
-    }       
-})
 app.listen(3000,()=>{
     console.log("running");     
-    })
+})

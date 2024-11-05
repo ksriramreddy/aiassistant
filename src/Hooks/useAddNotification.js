@@ -7,8 +7,6 @@ import { loginUser } from "../store/userInfo";
  export function useAddNotification () {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
-    console.log('logging user from add notification', user);
-    
     const [loading, setLoading] = useState(false);
     const addNotification = async (notification) => {
         setLoading(true);
@@ -20,6 +18,7 @@ import { loginUser } from "../store/userInfo";
             }
             await updateDoc(userDoc,updateUserDoc)
             dispatch(loginUser(updateUserDoc))
+            localStorage.setItem('user',JSON.stringify(updateUserDoc))
         } catch (error) {
             console.log("add notification", error);
         }
