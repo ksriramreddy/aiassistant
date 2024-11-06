@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCNg3kzOKgrZTW201PqO4Q2e95-SxDWPZQ",
-  authDomain: "ai-assistant-bb27d.firebaseapp.com",
-  projectId: "ai-assistant-bb27d",
-  storageBucket: "ai-assistant-bb27d.appspot.com",
-  messagingSenderId: "81247694041",
-  appId: "1:81247694041:web:23b337df9040f9ab1b62c8",
-  measurementId: "G-16KS5RE4VE"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId:import.meta.env.VITE_FIREBASE_PROJECT_ID ,
+  storageBucket:import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ,
+  messagingSenderId:import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId:import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);

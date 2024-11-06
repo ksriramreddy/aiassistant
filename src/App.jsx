@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path='/register' element={<Signup/>}/>
           <Route path='/login' element={!user? <Login/> : <Navigate to={`/`}/>}/>
-          <Route path={`/`} element={user? <Home/> : <Navigate to={'/login'} />}/>
+          <Route path={`/`} element={user? <Home/> : <Navigate to={'/register'} />}/>
         </Routes>
       </BrowserRouter>
     </>

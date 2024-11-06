@@ -7,7 +7,7 @@ export const useDeleteNotification = ()=>{
     const user = useSelector(state=>state.user)
     const dispatch = useDispatch()
     const userDoc = doc(firestore,'users',user.id)
-    console.log("user",user);
+    // console.log("user",user);
     
     const deleteNotification = async (notification)=>{
         const updateUserDoc = {
