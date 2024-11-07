@@ -24,7 +24,8 @@ function Signup() {
   return (
     <>
       <div className=' w-screen h-screen flex justify-center items-center'>
-          <div className='w-full flex md:w-1/2 bg-black justify-center items-center text-white pt-3 pb-3 '>
+          <div className='w-full flex flex-col md:w-1/2 bg-black justify-center items-center text-white pt-3 pb-3 '>
+          <h1 className=' font-extrabold '>REGISTER FORM</h1>
               <form action="" onSubmit={(e)=>{handleSubmit(e)}} className=' flex flex-col gap-2 '>
                   <label htmlFor="username">Username</label>
                   <input className=' border p-1 rounded-sm text-black ' onChange={e=>setUsername(e.target.value)} type="text" name="username"  placeholder='Username' />

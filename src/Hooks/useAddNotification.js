@@ -1,5 +1,5 @@
 import { firestore } from "../Firebase/firebase";
-import { arrayUnion, collection,doc,getDocs,query,updateDoc, where } from "firebase/firestore";
+import { arrayUnion, collection,doc,getDocs,limit,query,updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -18,13 +18,14 @@ import { loginUser } from "../store/userInfo";
             const querySnapshot = await getDocs(q)
             querySnapshot.forEach(doc=>{
                 newUser.push({id:doc.id,...doc.data()})
-                console.log(doc.data());
-                
+                // console.log(doc.data());
             })
-            console.log("newUser: " + newUser);
+            localStorage.setItem('user',JSON.stringify(newUser[0]))
+            dispatch(loginUser(newUser[0]))
+            console.log("newUser: " + newUser[0]);
         }
         useLoadNotifications()
-    },[user])
+    },[!user])
     const addNotification = async (notification) => {
         setLoading(true);
         const userDoc = doc(firestore , 'users', user.id)
