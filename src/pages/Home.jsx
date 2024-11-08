@@ -17,7 +17,7 @@ const Home = () => {
   // }
   return (
     <div className='w-full  flex-row bg-black h-screen p-6'>
-      <div className='w-1/2 m-auto p-3 bg-slate-700 flex gap-6 flex-col '>
+      <div className='w-1/2 m-auto rounded-lg p-3 bg-slate-700 flex gap-6 flex-col '>
         <Input/>
         <Notifications/> 
       </div>

@@ -8,10 +8,11 @@ import { useDeleteNotification } from '../Hooks/useDeleteNotification'
 
 const Notification = ({notification}) => {
     const {setNotification} = useSetNotifications()
-    setNotification(notification)
+    const closeTimeout = setNotification(notification)
     const {deleteNotification} = useDeleteNotification()
     const handleDelete = () => {
         deleteNotification(notification)
+        clearTimeout(closeTimeout)
     }
     
   return (

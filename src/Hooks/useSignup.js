@@ -1,5 +1,5 @@
 import { firestore } from "../Firebase/firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export function useSignup () {
@@ -10,6 +10,12 @@ export function useSignup () {
         setLoading(true);
         setError(null);
         const collec = collection(firestore,'users')
+        const q = query(collec,where('username',"==",data.username))
+        const querySnapshot = await getDocs(q)
+        if(!querySnapshot.empty){
+            console.log("username already present");
+            return
+        }
         try {
             await addDoc(collec , data)
             console.log(data);
