@@ -41,7 +41,7 @@ const Login = () => {
   return (
     <>
       <div className=' w-screen h-screen flex justify-center items-center'>
-          <div className='w-full flex md:w-1/2 bg-black justify-center items-center flex-col  text-white pt-3 pb-3 '>
+          <div className=' flex p-10 rounded-lg bg-black justify-center items-center flex-col  text-white pt-3 pb-3 '>
           <h1 className=' font-extrabold '>LOGIN FORM</h1>
               <form action="" onSubmit={(e)=>{handleSubmit(e)}} className=' flex flex-col gap-2 '>
                   <label htmlFor="username">Username</label>

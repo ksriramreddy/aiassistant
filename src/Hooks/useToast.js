@@ -1,13 +1,16 @@
-import {toast } from "react-toastify";
+// import { use } from '@chakra-ui/react';
+// import React, { useCallback } from 'react';
 
-import "react-toastify/dist/ReactToastify.css";
-
-export const notify = (message) => toast.info(message,{
-    position:"bottom-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-})
+// export const useShowToast = () => {
+//     const toast = useToast()
+//     const showToast = useCallback((title,disp,status)=>{
+//         toast({
+//             title:title,
+//             discription: disp,
+//             status : status,
+//             duration: 3000,
+//             isClosable: true
+//         })
+//     },[toast])
+//     return showToast
+// }

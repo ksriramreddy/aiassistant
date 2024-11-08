@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useSignup } from '../Hooks/useSignup'
+import { Toaster } from 'react-hot-toast'
 
 function Signup() {
   const [username,setUsername] = useState("")
@@ -24,7 +25,7 @@ function Signup() {
   return (
     <>
       <div className=' w-screen h-screen flex justify-center items-center'>
-          <div className='w-full flex flex-col md:w-1/2 bg-black justify-center items-center text-white pt-3 pb-3 '>
+          <div className='p-10 rounded-lg flex flex-col bg-black justify-center items-center text-white pt-3 pb-3 '>
           <h1 className=' font-extrabold '>REGISTER FORM</h1>
               <form action="" onSubmit={(e)=>{handleSubmit(e)}} className=' flex flex-col gap-2 '>
                   <label htmlFor="username">Username</label>
@@ -33,6 +34,7 @@ function Signup() {
                   <input className=' border p-1 rounded-sm text-black' onChange={e=>setPassword(e.target.value)} type="password" name="pass"  placeholder='password'/>
                   <input type="submit" value="Register" className='border p-1 bg-blue-600 rounded-md cursor-pointer'/>
                   <h1>already have an account? <a href="/login">Login</a></h1>
+                  <Toaster/>
               </form>
 
           </div>
