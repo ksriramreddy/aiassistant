@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../store/userInfo";
+import toast from "react-hot-toast";
 // import { useLoadNotifications } from "./useLoadNotifications";
  export function useAddNotification () {
     const dispatch = useDispatch();
@@ -38,7 +39,9 @@ import { loginUser } from "../store/userInfo";
             await updateDoc(userDoc,updateUserDoc)
             dispatch(loginUser(updateUserDoc))
             localStorage.setItem('user',JSON.stringify(updateUserDoc))
+            toast.success("Added new Notification")
         } catch (error) {
+            toast.error("Failed to add new Notification")
             console.log("add notification", error);
         }
     };  

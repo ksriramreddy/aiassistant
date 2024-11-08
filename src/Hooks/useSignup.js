@@ -16,15 +16,14 @@ export function useSignup () {
         const q = query(collec,where('username',"==",data.username))
         const querySnapshot = await getDocs(q)
         if(!querySnapshot.empty){
-            console.log("username already present");
             // showToast('success','username already exists','error')
-            toast('error')
+            toast.error("Username already exists")
             return
         }
         try {
             await addDoc(collec , data)
             console.log(data);
-            // showToast('success','signup successful. please Login','success')
+            toast.success("Account Creation Success. Please login")
             navigation('/login')
         } catch (error) {
             console.log("signup error: " + error);

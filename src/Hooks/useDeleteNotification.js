@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { firestore } from "../Firebase/firebase";
 import {collection,updateDoc,doc} from 'firebase/firestore'
 import { loginUser } from "../store/userInfo";
+import toast from "react-hot-toast";
 
 export const useDeleteNotification = ()=>{
     const user = useSelector(state=>state.user)
@@ -19,6 +20,7 @@ export const useDeleteNotification = ()=>{
         await updateDoc(userDoc,updateUserDoc)
         dispatch(loginUser(updateUserDoc))
         localStorage.setItem('user',JSON.stringify(updateUserDoc))
+        toast.success("Notification deleted")
         console.log(updateUserDoc);
     }
     return {

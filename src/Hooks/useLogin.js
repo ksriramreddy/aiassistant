@@ -5,6 +5,7 @@ import { loginUser } from "../store/userInfo";
 import { useState} from "react";
 // import { notify } from "./useToast";
 import { useNavigation } from "react-router-dom";
+import toast from "react-hot-toast";
 export function useLogin() {
     const dispatch = useDispatch();
     // const navigation = useNavigation();
@@ -25,15 +26,17 @@ export function useLogin() {
             if(user.length>0){
                 dispatch(loginUser(user[0]))
                 localStorage.setItem('user', JSON.stringify(user[0]))
-                notify('Logged in successfully')
+                toast.success('Logged in successfully')
                 // navigation('/home')
                 isLoading(false)
             }
             else{
                 setError('User not found')
+                toast.error('User not found')
                 isLoading(false)
             }
         } catch (error) {
+            toast.error('Unable to login')
             return error
         }
         return user
