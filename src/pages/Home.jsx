@@ -21,8 +21,7 @@ const Home = () => {
         <Input/>
         <Notifications/> 
       </div>
-    </div>
+    </div> 
   )
 }
-
 export default Home

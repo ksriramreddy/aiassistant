@@ -1,7 +1,9 @@
-
-export function sendNotification(subject){
+// import { generateResponse } from "../OpenAI/generateMsg";
+let message = ''
+export function sendNotification(subject,aiMessage){
     console.log(Notification.permission);
-    
+    message = aiMessage
+    console.log("ai message: " + aiMessage);
     if(Notification.permission === 'granted'){
         createNotification(subject)
     }
@@ -21,15 +23,10 @@ export function sendNotification(subject){
 }
 }
 function createNotification(subject) {
-    console.log(subject);
     new Notification(subject,{
-        body: subject,
+        body: message,
     })
 }
-
-setTimeout(() => {
-    sendNotification('test')
-}, 5000);
 
 // export function createNotification(){
 //     setTimeout(() => {

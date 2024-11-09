@@ -1,5 +1,7 @@
+import { generateResponse } from "../OpenAI/generateMsg";
 import { sendNotification } from "../SendNotification/sendNotification";
-import {createResponse} from '../Anthropic/getResponse'
+// import {createResponse} from '../Anthropic/getResponse'
+import { json } from "react-router-dom";
 export function useSetNotifications(){
     const setNotification = async (notification) => {
         const minutes = notification.time.slice(3, 5);
@@ -11,10 +13,19 @@ export function useSetNotifications(){
         if(delay < 0){
             delay += 24*60*60*1000
         }
-        // const response = await createResponse(notification.subject)
-        // console.log(response)
-        const closeTimeout = setTimeout(()=>{
-            sendNotification(notification.subject)
+        
+        const closeTimeout = setTimeout (async ()=>{
+            let aiMessage = ''
+            try {
+                generateResponse(notification.subject).then((res)=>{
+                    aiMessage = res.choices[0].message.content
+                    console.log(aiMessage);
+                    sendNotification(notification.subject,aiMessage)
+                })
+                console.log("ai",aiMessage);
+            } catch (error) {
+                console.log(error.message);
+            }
             return ()=>{
                 clearTimeout(closeTimeout)
                 console.log('Notification closed')
