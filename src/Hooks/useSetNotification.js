@@ -1,4 +1,4 @@
-import { generateResponse } from "../OpenAI/generateMsg";
+// import { generateResponse } from "../OpenAI/generateMsg";
 import { sendNotification } from "../SendNotification/sendNotification";
 // import {createResponse} from '../Anthropic/getResponse'
 import { json } from "react-router-dom";
@@ -17,11 +17,11 @@ export function useSetNotifications(){
         const closeTimeout = setTimeout (async ()=>{
             let aiMessage = ''
             try {
-                generateResponse(notification.subject).then((res)=>{
-                    aiMessage = res.choices[0].message.content
-                    console.log(aiMessage);
-                    sendNotification(notification.subject,aiMessage)
-                })
+                // generateResponse(notification.subject).then((res)=>{
+                //     aiMessage = res.choices[0].message.content
+                //     console.log(aiMessage);
+                // })
+                sendNotification(notification.subject,aiMessage)
                 console.log("ai",aiMessage);
             } catch (error) {
                 console.log(error.message);
